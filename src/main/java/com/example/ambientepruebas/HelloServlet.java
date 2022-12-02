@@ -82,12 +82,12 @@ public class HelloServlet extends HttpServlet {
       Map<String, UsuarioDTO> map = gson.fromJson(responsee2.body(), new TypeToken<Map<String, UsuarioDTO>>(){}.getType());
       System.out.println("el map es"+map);
 
-      System.out.println("el usuario obtenido"+map.get("lachiqui"));
+      System.out.println("el usuario obtenido "+map.get("lachiqui"));
 
       //String temp = (String) usuariodto.get("lachiqui");
       UsuarioDTO lachiqui2 = map.get("lachiqui");
       System.out.println("prueba:"+lachiqui2.getNickname());
-
+        request.setAttribute("usuarios",map);
     } catch (InterruptedException e) {
       throw new RuntimeException(e);
     }
