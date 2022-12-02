@@ -5,11 +5,11 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
 	System.out.println("Web");
-	//Map<String, UsuarioDTO> usuarios = request.getAttribute("usuarios") != null ? (Map<String, UsuarioDTO>) request.getAttribute("usuarios") : new HashMap<>();
+	Map<String, UsuarioDTO> usuarios = request.getAttribute("usuarios") != null ? (Map<String, UsuarioDTO>) request.getAttribute("usuarios") : new HashMap<>();
 	String usuario = (String) request.getAttribute("usuario");
 	UsuarioDTO usuario2 = (UsuarioDTO) request.getAttribute("usuario2");
 	UsuarioDTO user =  new Gson().fromJson(usuario, UsuarioDTO.class);
-
+	//Map<String, UsuarioDTO> usuarios = (Map<String, UsuarioDTO>) request.getAttribute("usuarios");
 	System.out.println(usuario);
 	if(usuario2!=null)
 	System.out.println("el usuario 2 es:"+usuario2.getNickname());
@@ -30,6 +30,17 @@
 		<h2><%= user.getNickname()%></h2>
 		<h2><%= user.getNombre()%></h2>
 	<%
+		}
+	%>
+
+	<%
+		if(usuarios != null){
+			for (UsuarioDTO u : usuarios.values()) {
+
+	%>
+				<h2><%= u.getNickname()%></h2>
+	<%
+			}
 		}
 	%>
 	
